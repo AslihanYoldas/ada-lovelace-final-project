@@ -62,7 +62,7 @@ def plot_scatter(df, colmn_name_x, colmn_name_y, hue, palette, title, xlabel, yl
                 )
     plt.show()
 
-def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette='pastel'):
+def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette='pastel',hue_order=None):
 
     plt.figure(figsize=(15,8))
     plt.title(title)
@@ -70,17 +70,18 @@ def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette
     plt.xlabel(xlabel)
     sns.barplot(data=df,
                 hue=hue,
+                hue_order=hue_order,
                 x=colmn_name_x,
                 y=colmn_name_y,
                 palette=palette
                 )
     plt.show()
     
-def plot_count(data, title, xlabel,color):
+def plot_count(data, title, xlabel,color,order=None):
     plt.figure(figsize=(15,8))
     plt.title(title)
     plt.xlabel(xlabel)
-    sns.countplot(x=data,color=color,orient='v',stat='percent')
+    sns.countplot(x=data,color=color,orient='v',stat='percent',order=order)
     plt.show()
   
 
@@ -100,5 +101,8 @@ def corr_heatmap(df, column_names):
     sns.heatmap(matrix, 
             xticklabels=matrix.columns.values,
             yticklabels=matrix.columns.values,
-            vmin=-1)
+            cmap='RdYlBu',
+            vmin=-1,
+            vmax=1
+            )
     plt.show()
