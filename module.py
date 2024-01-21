@@ -37,7 +37,7 @@ def plot_hist(df, title, xlabel, column_name, bin_num, kde, color='maroon'):
     
 
 
-def plot_scatter(df, colmn_name_x, colmn_name_y, hue, palette, title, xlabel, ylabel):
+def plot_scatter(x, y, title, xlabel, ylabel, hue=None, palette=None, color= None, marker='x'):
     """
     Scatter plot for the given dataframe's columns.
 
@@ -54,15 +54,17 @@ def plot_scatter(df, colmn_name_x, colmn_name_y, hue, palette, title, xlabel, yl
     plt.title(title)
     plt.ylabel(ylabel)
     plt.xlabel(xlabel)
-    sns.scatterplot(data=df,
-                x=colmn_name_x,
-                y=colmn_name_y,
-                hue=hue,
-                palette=palette
+    plt.scatter(x = x,
+                y = y,
+                hue = hue,
+                palette = palette,
+                color = color,
+                marker=marker
+            
                 )
-    plt.show()
+    plt.show(sns)
 
-def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette='pastel',hue_order=None):
+def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette=None,hue_order=None,order=None):
 
     plt.figure(figsize=(15,8))
     plt.title(title)
@@ -73,15 +75,16 @@ def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, hue, palette
                 hue_order=hue_order,
                 x=colmn_name_x,
                 y=colmn_name_y,
-                palette=palette
+                palette=palette,
+                order=order
                 )
     plt.show()
     
-def plot_count(data, title, xlabel,color,order=None):
+def plot_count(data, title, xlabel,color=None,order=None,hue=None,palette=None):
     plt.figure(figsize=(15,8))
     plt.title(title)
     plt.xlabel(xlabel)
-    sns.countplot(x=data,color=color,orient='v',stat='percent',order=order)
+    sns.countplot(x=data,color=color,hue=hue, palette=palette,orient='v',stat='percent',order=order)
     plt.show()
   
 
