@@ -1,5 +1,6 @@
 import matplotlib.pyplot as plt
 import pandas as pd
+from sklearn.calibration import LabelEncoder
 from sklearn.linear_model import LogisticRegression
 from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
@@ -10,6 +11,11 @@ from sklearn import svm
 from sklearn.feature_selection import SelectKBest, f_classif
 from sklearn.ensemble import ExtraTreesClassifier
 from sklearn.neighbors import KNeighborsClassifier
+
+def encode_categorical_variable(categorical_data):
+    le = LabelEncoder()
+    train = categorical_data.unique()
+    return le.fit(train).transform(categorical_data)
 
 def normalize_data(df, dropped_columns):
 
