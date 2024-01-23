@@ -26,7 +26,6 @@ replace_number_of_weekend_nights_outlier_with_median_of_similar_rows(df)
 replace_number_of_week_nights_outlier_with_median_of_similar_rows(df,11)
 replace_P_C_outlier_with_median_of_similar_rows(df,10)
 replace_P_not_C_outlier_with_median_of_similar_rows(df,30)
-df = df.drop(df.query('arrival_year == 2016 | arrival_year == 2020 | reservation_year == 2016' ).index)
 
 # Creating New Feautures
 # Reservation date day/month/year
@@ -47,22 +46,31 @@ df["number_of_total_nights"] = df["number_of_weekend_nights"]+df['number_of_week
 #total number of people that staying
 df["number_of_total_people"] = df["number_of_children"]+df['number_of_adults']
 
+# the rows that arrival year 2016 and 2020 dropped 
+df = df.drop(df.query('arrival_year == 2016 | arrival_year == 2020 | reservation_year == 2016' ).index)
+
+# Encode categorical variables
+df['booking_status'] = encode_categorical_variable(df['booking_status'])
+df['room_type'] = encode_categorical_variable(df['room_type'])
+df['market_segment_type'] = encode_categorical_variable(df['market_segment_type'])
+df['type_of_meal'] = encode_categorical_variable(df['type_of_meal'])
+
 # Normalize the data
 df_normalized = normalize_data(df,['Booking_ID','date_of_reservation','date_of_arrival','booking_status'])
 X = df_normalized
 y = df['booking_status']
 
 # Feauture Selection
-df_feauture_k_best_score, df_feautures_k_best = feauture_selection_select_k_best(8,X,y)
+df_feauture_k_best_score, df_feautures_k_best = feauture_selection_select_k_best(df_normalized,8,X,y)
 plot_bar(df_feauture_k_best_score,'feature_score', 'feature_name','K-Best Feature Importance Scores', 'Feauture Score', 'Feature Name',color='salmon',orient='h')
 print("k-best features:", df_feautures_k_best.columns)
-df_extra_tree_class_feature_score,df_feautures_extra_tree_class = feature_selection_extra_trees_classifier(X,y)
+df_extra_tree_class_feature_score,df_feautures_extra_tree_class = feature_selection_extra_trees_classifier(df_normalized,X,y)
 plot_bar(df_extra_tree_class_feature_score,'feature_score', 'feature_name','Extra Tree Class Feature Importance Scores', 'Feauture Score', 'Feature Name',color='salmon',orient='h')
 print("Extra Tree classifier features:", df_feautures_extra_tree_class.columns)
-df_logistic_feature_score, df_feautures_logistic = feauture_selection_logistic_regression(X,y)
+df_logistic_feature_score, df_feautures_logistic = feauture_selection_logistic_regression(df_normalized,X,y)
 plot_bar(df_logistic_feature_score,'feature_score', 'feature_name','Logistic Regression Feature Importance Scores', 'Feauture Score', 'Feature Name',color='salmon',orient='h')
 print("Logistic Regression features:", df_feautures_logistic.columns)
-df_dt_feature_score,df_feautures_dt = feature_selection_dt(X,y)
+df_dt_feature_score,df_feautures_dt = feature_selection_dt(df_normalized,X,y)
 plot_bar(df_dt_feature_score,'feature_score', 'feature_name','Decision Tree Feature Importance Scores', 'Feauture Score', 'Feature Name',color='salmon',orient='h')
 print("Decision Tree features:", df_feautures_dt.columns)
 
