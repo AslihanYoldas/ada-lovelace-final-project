@@ -13,7 +13,13 @@ cd ada-lovelace-final-project.git
 
 pip install -r requirements.txt 
 ```
+## Usage
+Run the run.py script to load dataset, data preprocessing, feauture selection, training models and visualize evulation of the models. In module folder with three module files the functions that are used in the project and the used libraries defined.
 
+For seeing the detailed steps through projcet you can look at the notebooks. If you want to see visualization of the data yo can look at the data viz notebook. The steps are explained below with the notebook links.
+``` 
+python run.py
+``` 
 ## Data
 [Dataset link](https://www.kaggle.com/datasets/youssefaboelwafa/hotel-booking-cancellation-prediction) 
 
@@ -26,7 +32,7 @@ pip install -r requirements.txt
     - number_of_week_nights *int - number of week nights*
     - type_of_meal *category - meal type (Meal type 1, Meal Type 2, Meal Type 3, Not Selected)*
     - car_parking_space *int- car parking space (0,1)*
-    - room_type *category - room type (Room Type 1, Room Type 2, Room Type 3, Room Type 4)*
+    - room_type *category - room type (Room Type 1, Room Type 2, Room Type 3, Room Type 4, Room Type 5, Room Type 6, Room Type 7)*
     - lead_time *int - number of days between the booking date and the arrival date*
     - market_segment_type *category - market segment type (Offline, Online, Corporate, Aviation, Complementary)*
     - repeated *int - Indicates whether the booking is a repeat booking (0,1)*
@@ -39,11 +45,11 @@ pip install -r requirements.txt
 - New columns : This columns created by using existing columns 
     - reservation_day *int - day of the reservation (1-31)*
     - reservation_month *int - month of the reservation (1-12)*
-    - reservation_year *int - year of the reservation (2016-2019)*
+    - reservation_year *int - year of the reservation (2015-2018)*
     - date_of_arrival *datetime - date of the arrival* 
     - arrival_day *int - day of the arrival (1-31)*
     - arrival_month *int - month of the arrival (1-12)*
-    - arrival_year *int - year of the arrival (2018-2020)*
+    - arrival_year *int - year of the arrival (2016-2020)*
     - lead_month *int - number of months between the booking date and the arrival date*
     - number_of_total_nights *int - sum of week and weekend nights*
     - number_of_total_people *int - sum of adult and children*
@@ -68,7 +74,7 @@ Outliers detected and replaced in:
 - P-not-C
 <br><br/>
 
- Also because there is only one row has the arrival date of 2016 and three rows has the arrival date of 2020 that rows dropped.
+ Also because there is only one row has the arrival date of 2016 and three rows has the arrival date of 2020 that rows dropped. Because of droopping these rows reservation year 2015 and 2016 also dropped.
 
 ## Data Visualazation
 [Data-Viz-Notebook](/data_viz.ipynb)
@@ -86,28 +92,49 @@ Hotel booking cancelation prediction is a classifying problem. For this task Log
 
 ### Logistic Regression
 
-For logistic regression a model trained with all the data and coefficents for every variable compared. Both positive and negative values higher than 0.5 is selected which are :
+For logistic regression a model trained with all the data and coefficents for every variable compared. Both positive and negative values higher than 0.5 are selected which are :
 - special_requests
 - average_price
 - lead_time
 - market_segment_type
 
-### KNN
-
 ### Decision Tree 
+Similar to logistic regression a model trained with all tthe data and model's importance score for each variable compared. Values higher than the 0.05 are selected which are :
+- lead_time
+- average_price
+- special_requests
+- market_segment_type
+- reservation day
+- arrival day
 
-### SVC
+### KNN and SVC
+For KNN and SVC select k best with f_classif score function and Extra Tree Classifier models feaure importance score used. Both techiques returned the same features which are :
+- lead_time
+- average_price
+- special_requests
+- market_segment_type
+- reservation day
+- reservation month
+- arrival day
+- lead month
+- arrival month
+
 
 ## Model Training
-Dataset normalized and spillited 80/20 ratio
+Dataset normalized and for each model spillited 80/20 ratio using selected features.
+
 ## Model Evaluation
 Model Evaluation made with confusion matrix and classification reports.
+
 - Logistic Regression
 ![Alt text](plots/cm_logistic.png)
+
 - KNN
 ![Alt text](plots/cm_knn.png)
+
 - Decision Tree
 ![Alt text](plots/cm_dt.png)
+
 - SVC
 ![Alt text](plots/cm_svc.png)
 
