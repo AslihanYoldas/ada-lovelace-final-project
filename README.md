@@ -79,8 +79,53 @@ Outliers detected and replaced in:
 ## Data Visualazation
 [Data-Viz-Notebook](/data_viz.ipynb)
 
+- Classes are imbalanced. Most of the data is classified not cancelled.
 
+![Alt text](plots/booking_pie.png)
+----
 
+- Average Price Distribution group by booking status
+
+![Alt text](plots/average_price.png)
+
+---
+- Lead Time Distribution group by booking status
+- Most of the time there are 0-2 months between reservation and arrival
+- Bigger the time difference between reservation arrival date bigger rate of the cancelation
+
+![Alt text](plots/lead_time.png)
+---
+
+- Special Request Distribution group by booking status
+- Most of the time there are 0-2 special request 
+- More special request made lesser cancelation
+
+![Alt text](plots/special_request.png)
+----
+
+- Mostly arrival to the hotel is in 2018 but there are also 207 and 2019 data
+
+![Alt text](plots/arrival_year.png)
+
+---
+
+- In 2017 and 2018 Not Cancelled ratio bigger than Cancelled ratio but 2019 Canceled is more dominant
+
+![Alt text](plots/booking_status_in_year.png)
+---
+
+- There is a big increase in lead time in the bookings that have arrival date of 2019
+- Because of lead time increased cancelation in 2019 is bigger than other years
+
+![Alt text](plots/lead_time_line.png)
+
+---
+
+- Corelation Heat Map
+- lead time , market segment type, average price, special request,reservation year, arrival year and lead month has a correlation with booking status
+- There is not a strong corelation with other variables except the obvious ones.
+
+![Alt text](plots/corelation.png)
 
 ## Modelling
 
