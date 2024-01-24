@@ -172,16 +172,22 @@ Dataset normalized and for each model spillited 80/20 ratio using selected featu
 Model Evaluation made with confusion matrix and classification reports.
 
 - Logistic Regression
+  
 ![Alt text](plots/cm_logistic.png)
 
 - KNN
+  
 ![Alt text](plots/cm_knn.png)
 
 - Decision Tree
+  
 ![Alt text](plots/cm_dt.png)
 
 - SVC
+  
 ![Alt text](plots/cm_svc.png)
+
+---
 
 ### F1 Score Table
 
