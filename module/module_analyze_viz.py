@@ -45,7 +45,7 @@ def plot_hist(df, title, xlabel, column_name, bin_num, kde, hue=None):
     
     
 def plot_count(data, title, xlabel,color=None,hue=None,palette=None):
-    """Plots histogram for the given dataframe's column.
+    """Plots count plot for the given dataframe's column.
 
     :param data: dataframe that contains one column
     :param title: str - title of the plot
@@ -62,7 +62,31 @@ def plot_count(data, title, xlabel,color=None,hue=None,palette=None):
     plt.show()
   
 
+def plot_bar(df, colmn_name_x, colmn_name_y, title, xlabel, ylabel, color, orient='v'):
+    """
+    Plots bar plot for the given data.
 
+    :param df: dataframe
+    :param column_name_x: str - x axis data's column name
+    :param column_name_y: str - y axis data's column name
+    :param title: str - Title of the plot
+    :param xlabel: str - Label of the x-axis
+    :param ylabel: str - Label of the y-axis
+    :param color: string - color of the plot 
+    :param orien: string - Orientation of the plot (orient ='v')
+
+    :return : shows the plot"""
+    plt.figure(figsize=(15,8))
+    plt.title(title)
+    plt.ylabel(ylabel)
+    plt.xlabel(xlabel)
+    sns.barplot(data=df,
+                x=colmn_name_x,
+                y=colmn_name_y,
+                color=color,
+                orient = orient
+                )
+    plt.show()
 
 def corr_heatmap(df):
     """
