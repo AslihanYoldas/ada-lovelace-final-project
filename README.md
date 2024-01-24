@@ -49,7 +49,7 @@ pip install -r requirements.txt
     - number_of_total_people *int - sum of adult and children*
 
 ## Data Preprocessing
-[Preprocessing-notebook]('data_analyze.ipynb')
+[Preprocessing-notebook](/data_analyze.ipynb)
 - Dataset doesn't have null values.
 
 ### Handling Outliers
@@ -70,18 +70,63 @@ Outliers detected and replaced in:
 
  Also because there is only one row has the arrival date of 2016 and three rows has the arrival date of 2020 that rows dropped.
 
-
 ## Data Visualazation
+[Data-Viz-Notebook](/data_viz.ipynb)
+
+
+
+
+## Modelling
+
+[Modelling notebook](/modelling.ipynb)
+
+Hotel booking cancelation prediction is a classifying problem. For this task Logistic Regression model, K-Nearest Neighbour Classifier, Decision Tree Classifier, Support Vector Classifier trained and evaluated.
 
 ## Feauture Selection 
 
 ### Logistic Regression
-###
+
+For logistic regression a model trained with all the data and coefficents for every variable compared. Both positive and negative values higher than 0.5 is selected which are :
+- special_requests
+- average_price
+- lead_time
+- market_segment_type
+
+### KNN
+
+### Decision Tree 
+
+### SVC
 
 ## Model Training
+Dataset normalized and spillited 80/20 ratio
 ## Model Evaluation
+Model Evaluation made with confusion matrix and classification reports.
+- Logistic Regression
+![Alt text](plots/cm_logistic.png)
+- KNN
+![Alt text](plots/cm_knn.png)
+- Decision Tree
+![Alt text](plots/cm_dt.png)
+- SVC
+![Alt text](plots/cm_svc.png)
+
+### F1 Score Table
+
+| Model       | Cancelled   | Not Canceled |
+| ----------- | ----------- | ----------
+| Logistic Regression| 0.66| 0.85
+| KNN   | 0.75  | 0.89
+| Decision Tree   | 0.77 | 0.88
+| SVC   | 0.68 | 0.87
 
 ## Results
+- Not canceled class prediction is better than cancelled. It is most likely because of imbalance of classes. 
+- Best canceled  prediction made with decision tree at %77 
+- Best not canceled prediction made with knn at %89
+- KNN and Decision Tree are the best resulted models.
+
+
 
 ## Contributing
 Feel free to contribute by opening issues or submitting pull requests. 
