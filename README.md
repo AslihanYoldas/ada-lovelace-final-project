@@ -2,6 +2,10 @@
 
 Data Science project for analyzing and visualizing hotel booking dataset and predicting booking status.
 
+[Link to Kaggle Project](https://www.kaggle.com/code/aslhanyolda/hotel-booking-cancelation-prediction)
+[Link to Kaggle Notebook here](/Data-Science-Academy-Final-Project/hotel-booking-cancelation-prediction.ipynb)
+
+
 ## Installation
 Make sure you have Python installed. Clone the repository and install the required dependencies.
 
@@ -55,7 +59,7 @@ python run.py
     - number_of_total_people *int - sum of adult and children*
 
 ## Data Preprocessing
-[Preprocessing-notebook](/data_analyze.ipynb)
+[Preprocessing-notebook](/Data-Science-Academy-Final-Project/data_analyze.ipynb)
 - Dataset doesn't have null values.
 
 ### Handling Outliers
@@ -77,47 +81,47 @@ Outliers detected and replaced in:
  Also because there is only one row has the arrival date of 2016 and three rows has the arrival date of 2020 that rows dropped. Because of droopping these rows reservation year 2015 and 2016 also dropped.
 
 ## Data Visualazation
-[Data-Viz-Notebook](/data_viz.ipynb)
+[Data-Viz-Notebook](/Data-Science-Academy-Final-Project/data_viz.ipynb)
 
 - Classes are imbalanced. Most of the data is classified not cancelled.
 
-![Alt text](plots/booking_pie.png)
+![Alt text](/Data-Science-Academy-Final-Projectplots/booking_pie.png)
 ----
 
 - Average Price Distribution group by booking status
 
-![Alt text](plots/average_price.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/average_price.png)
 
 ---
 - Lead Time Distribution group by booking status
 - Most of the time there are 0-2 months between reservation and arrival
 - Bigger the time difference between reservation arrival date bigger rate of the cancelation
 
-![Alt text](plots/lead_time.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/lead_time.png)
 ---
 
 - Special Request Distribution group by booking status
 - Most of the time there are 0-2 special request 
 - More special request made lesser cancelation
 
-![Alt text](plots/special_request.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/special_request.png)
 ----
 
 - Mostly arrival to the hotel is in 2018 but there are also 207 and 2019 data
 
-![Alt text](plots/arrival_year.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/arrival_year.png)
 
 ---
 
 - In 2017 and 2018 Not Cancelled ratio bigger than Cancelled ratio but 2019 Canceled is more dominant
 
-![Alt text](plots/booking_status_in_year.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/booking_status_in_year.png)
 ---
 
 - There is a big increase in lead time in the bookings that have arrival date of 2019
 - Because of lead time increased cancelation in 2019 is bigger than other years
 
-![Alt text](plots/lead_time_line.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/lead_time_line.png)
 
 ---
 
@@ -125,11 +129,11 @@ Outliers detected and replaced in:
 - lead time , market segment type, average price, special request,reservation year, arrival year and lead month has a correlation with booking status
 - There is not a strong corelation with other variables except the obvious ones.
 
-![Alt text](plots/corelation.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/corelation.png)
 
 ## Modelling
 
-[Modelling notebook](/modelling.ipynb)
+[Modelling notebook](/Data-Science-Academy-Final-Project/modelling.ipynb)
 
 Hotel booking cancelation prediction is a classifying problem. For this task Logistic Regression model, K-Nearest Neighbour Classifier, Decision Tree Classifier, Support Vector Classifier trained and evaluated.
 
@@ -173,19 +177,19 @@ Model Evaluation made with confusion matrix and classification reports.
 
 - Logistic Regression
   
-![Alt text](plots/cm_logistic.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/cm_logistic.png)
 
 - KNN
   
-![Alt text](plots/cm_knn.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/cm_knn.png)
 
 - Decision Tree
   
-![Alt text](plots/cm_dt.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/cm_dt.png)
 
 - SVC
   
-![Alt text](plots/cm_svc.png)
+![Alt text](/Data-Science-Academy-Final-Project/plots/cm_svc.png)
 
 ---
 
